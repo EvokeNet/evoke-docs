@@ -3,14 +3,14 @@ sidebar_position: 3
 sidebar_class_name: green
 ---
 
-# 3. Centralized Database
+# Centralized Database
 
-## 3.1. Database Schema [TBD after APIs are defined]
-### 3.1.1. Tables and Relationships
-### 3.1.2. Indexing Strategy
-### 3.1.3. Data Security & Encryption
+## Database Schema [TBD after APIs are defined]
+### Tables and Relationships
+### Indexing Strategy
+### Data Security & Encryption
 
-## 3.2. Scalability
+## Scalability
 
 ### Vertical Scaling of the Centralized Database
 Vertical scaling, colloquially referred to as "scaling up," pertains to the enhancement of a single node's computational resources. In a database context within AWS Lightsail, this manifests as migrating the database to an instance with superior CPU, RAM, or I/O capabilities. This approach retains a monolithic architecture, obviating the need for significant topological or schema changes. While this method boasts immediate performance benefits and maintains the coherence of a singular operational node, it's constrained by the hardware specifications of the highest-tier instance. It's also worth noting that scaling operations might necessitate temporary downtimes, contingent on the database system's ability to adapt to new resources without service interruptions.
@@ -20,7 +20,7 @@ Horizontal scaling, often denoted as "scaling out," is the process of distributi
 
 For The Evoke Hub, the determination between vertical and horizontal scaling will be predicated on anticipated transactional volumes, data growth rates, and fault tolerance requirements as the Evoke ecosystem grows. If the system experiences high loads on the database, a judicious blend of both strategies, informed by regular performance metrics and monitoring, will be pivotal in ensuring system robustness and responsiveness.
 
-## 3.3. Backup & Recovery
+## Backup & Recovery
 
 ### Backup Strategy
 - Scheduled Backups: On a daily basis, automatic backups of the entire database are initiated, capturing the database's state at that moment. These backups are stored redundantly across multiple geographic zones to ensure data durability.
@@ -33,5 +33,5 @@ For The Evoke Hub, the determination between vertical and horizontal scaling wil
 - Snapshot Recovery: For larger issues or data discrepancies, the database can be rolled back to a previous state using the saved snapshots. This allows for flexibility in choosing a recovery point, ensuring the restoration of the most accurate and untampered data.
 - Disaster Recovery: In the unlikely event of a catastrophic failure or a compromise, a comprehensive disaster recovery plan is in place. The system can be rebuilt using the backups stored in Amazon S3 and Glacier, ensuring data integrity and continuity.
 
-## 3.4. Access Controls
+## Access Controls
 Access controls within The Evoke Hub are designed to ensure both system integrity and user data protection. Utilizing Keycloak for authentication, the system mandates granular role-based permissions, ensuring that users can only access and manipulate data within their designated purview. This delineation is evident in the distinct roles of system administrators, campaign managers, campaign mentors, and agents. Each role is accorded specific permissions, ensuring that sensitive operations, especially those related to system configurations or user data modifications, remain restricted to qualified personnel. Additionally, potential extensions such as two-factor authentication and single-sign-on mechanisms further fortify the access protocols. By maintaining stringent access controls, The Evoke Hub not only upholds its commitment to security but also ensures a streamlined and role-appropriate user experience for every stakeholder within the Evoke ecosystem.

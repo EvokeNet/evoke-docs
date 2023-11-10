@@ -64,15 +64,15 @@ const config: Config = {
         },
         {
           type: 'docSidebar',
-          sidebarId: 'developerSidebar',
-          position: 'left',
-          label: 'Developers',
-        },
-        {
-          type: 'docSidebar',
           sidebarId: 'sponsorSidebar',
           position: 'left',
           label: 'Sponsors',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'developerSidebar',
+          position: 'left',
+          label: 'Developers',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {

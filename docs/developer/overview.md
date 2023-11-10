@@ -3,9 +3,9 @@ sidebar_position: 2
 sidebar_class_name: green
 ---
 
-# 2. System Overview
+# System Overview
 
-## 2.1. System Description
+## System Description
 The Evoke Hub is the central integration layer designed to seamlessly connect and orchestrate the diverse platforms that make up the Evoke ecosystem. Its primary purpose is to ensure a unified and smooth experience for users, educators, and administrators across the various components of Evoke.The Evoke Hub serves as the backbone of the Evoke system, enabling:
 
 - Unified Access: Through the Single Sign-On (SSO) system, users can effortlessly access all platforms without the need for multiple logins.
@@ -30,7 +30,7 @@ While scale has not presented challenges as of yet, the nature of digital ecosys
 
 The Evoke Hub is not just a system; it's the technical embodiment of the Evoke vision, carefully crafted to ensure that every interaction, every game move, and every campaign runs seamlessly, securely, and in harmony with the larger Evoke narrative.
 
-## 2.2. Key Components
+## Key Components
 ### User Authentication (Powered by Keycloak)
 The Evoke Hub integrates Keycloak for robust user authentication. It offers flexibility to system administrators with the ability to optionally enable two-factor authentication or single-sign-on integrations. Moreover, a comprehensive user role and permission system is in place. This system categorizes users into four primary roles:
 

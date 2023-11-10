@@ -1,0 +1,11 @@
+{
+    "position": 7,
+    "label": "API reference",
+    "collapsible": true,
+    "collapsed": true,
+    "className": "green",
+    "link": {
+        "type": "generated-index",
+        "title": "Tutorial overview"
+    }
+}
