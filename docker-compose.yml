@@ -1,0 +1,21 @@
+version: "3"
+
+networks:
+  web:
+    external: true
+  internal:
+    external: false
+
+services:
+  doc-hub:
+    ports:
+      - "14231:80"
+    image: doc-hub:latest
+    labels:
+      - traefik.backend=doc-hub
+      - traefik.frontend.rule=Host:docs.evokenet.org
+      - traefik.docker.network=web
+      - traefik.port=80
+    networks:
+      - web
+      - internal
