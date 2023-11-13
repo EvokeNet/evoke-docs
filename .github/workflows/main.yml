@@ -10,7 +10,7 @@ jobs:
     name: Deploy to server
     runs-on: ubuntu-latest
     steps:
-      - name: 🔐 Executing remote ssh commands using ssh key
+      - name: 🔐 git pull
         uses: appleboy/ssh-action@v0.1.8
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -19,7 +19,43 @@ jobs:
           script: |
             cd ~/hub-doc
             git pull
+            
+      - name: 🔐 npm install
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ~/hub-doc
             npm install
+            
+      - name: 🔐 npm run build
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ~/hub-doc
             npm run build
+            
+      - name: 🔐 docker build
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ~/hub-doc
             sudo docker build -t doc-hub .
+            
+      - name: 🔐 docker build
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ~/hub-doc
             sudo docker-compose up -d
