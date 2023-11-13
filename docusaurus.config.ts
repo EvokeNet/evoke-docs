@@ -88,18 +88,18 @@ const config: Config = {
         {
           title: 'Docs',
           items: [
-            {
-              label: 'Partners',
-              to: '/docs/partners',
-            },
-            {
-              label: 'Developers',
-              to: '/docs/developers',
-            },
-            {
-              label: 'Sponsors',
-              to: '/docs/sponsors',
-            },
+            // {
+            //   label: 'Partners',
+            //   to: '/docs/partners',
+            // },
+            // {
+            //   label: 'Developers',
+            //   to: '/docs/developers',
+            // },
+            // {
+            //   label: 'Sponsors',
+            //   to: '/docs/sponsors',
+            // },
           ],
         },
         {
