@@ -1,0 +1,24 @@
+name: Deploy to server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Deploy to server
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔐 Executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ~/hub-doc
+            git pull
+            npm run build
+            sudo docker build -t doc-hub .
+            sudo docker-compose up -d
