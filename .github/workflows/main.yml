@@ -10,52 +10,36 @@ jobs:
     name: Deploy to server
     runs-on: ubuntu-latest
     steps:
-      - name: 🔐 git pull
-        uses: appleboy/ssh-action@v0.1.8
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v3
+
+      - name: 🛠️ Use Node.js 18.x
+        uses: actions/setup-node@v3
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            cd ~/hub-doc
-            git pull
+          node-version: 18.x
+
+      - name: 🛠️ Install dependencies
+        run: npm install
+
+      - name: 🚀 Build
+        run: npm run build
             
-      - name: 🔐 npm install
+      - name: 🕵🏻 Copy file via ssh key
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.STG_SSH_HOST }}
+          username: ${{ secrets.STG_SSH_USER }}
+          key: ${{ secrets.STG_SSH_KEY }}
+          source: "build,Dockerfile,docker-compose.yml,nginx.conf"
+          target: "~/hub-doc"
+          
+      - name: 🔐 Executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@v0.1.8
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
+          host: ${{ secrets.STG_SSH_HOST }}
+          username: ${{ secrets.STG_SSH_USER }}
+          key: ${{ secrets.STG_SSH_KEY }}
           script: |
-            cd ~/hub-doc
-            npm install
-            
-      - name: 🔐 npm run build
-        uses: appleboy/ssh-action@v0.1.8
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            cd ~/hub-doc
-            npm run build
-            
-      - name: 🔐 docker build
-        uses: appleboy/ssh-action@v0.1.8
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            cd ~/hub-doc
+            ~/hub-doc
             sudo docker build -t doc-hub .
-            
-      - name: 🔐 docker build
-        uses: appleboy/ssh-action@v0.1.8
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            cd ~/hub-doc
             sudo docker-compose up -d
