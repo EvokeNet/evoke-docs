@@ -19,6 +19,7 @@ jobs:
           script: |
             cd ~/hub-doc
             git pull
+            npm install
             npm run build
             sudo docker build -t doc-hub .
             sudo docker-compose up -d
