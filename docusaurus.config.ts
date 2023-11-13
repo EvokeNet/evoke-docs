@@ -125,7 +125,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Evoke, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} <br/> World Bank Group`,
     },
     prism: {
       theme: prismThemes.github,

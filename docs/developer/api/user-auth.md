@@ -1,5 +1,10 @@
+---
+title: "User/Authentication"
+sidebar_position: 2
+---
+
 # User Authentication
-Describe user authentication endpoint here.
+The Authentication endpoint is a crucial component for user security and access control in the API. It allows users to authenticate themselves by submitting their username and password. Upon successful authentication, the endpoint returns a unique token. This token is then used as a Bearer token in the Authorization header for subsequent API requests, ensuring that each request is authenticated and authorized. This endpoint is fundamental for maintaining secure user sessions and personalized interactions within the API.
 
 ## Endpoint
 ```https://evokenet.org/api/v1/auth```

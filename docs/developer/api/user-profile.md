@@ -1,5 +1,10 @@
+---
+title: "User/Profile"
+sidebar_position: 3
+---
+
 # User Profile
-Describe user authentication endpoint here.
+The User Profile endpoint is used to retrieve the personal profile information of an authenticated user. By providing a valid authentication token in the request header, users can access details such as their username, email, name, date of birth, and profile picture URL. This endpoint is essential for applications where personalization and user-specific data retrieval are necessary. It ensures that users can securely and conveniently access their own profile data.
 
 ## Endpoint
 ```https://evokenet.org/api/v1/user/profile```
