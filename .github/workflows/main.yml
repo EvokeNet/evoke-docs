@@ -40,6 +40,6 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            ~/hub-doc
+            cd ~/hub-doc
             sudo docker build -t doc-hub .
             sudo docker-compose up -d
